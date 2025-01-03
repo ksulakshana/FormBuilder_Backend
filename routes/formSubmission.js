@@ -61,7 +61,7 @@ router.post("/addCompleteCount", async (req, res) => {
   try {
     const { formId } = req.body;
     const formSubmitted = true;
-    console.log(formId);
+
     const ifFormExists = await Fields.findOne({ formId: formId });
     if (!ifFormExists) {
       return res.status(400).json({ message: "Form Does Not Exists" });
@@ -71,7 +71,7 @@ router.post("/addCompleteCount", async (req, res) => {
       formId: formId,
       formSubmitted: formSubmitted,
     });
-    console.log(formSubmission);
+
     await formSubmission.save();
 
     return res.status(201).json({ message: "Form viewed added successfully" });
