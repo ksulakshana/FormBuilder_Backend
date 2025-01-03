@@ -98,6 +98,13 @@ router.put("/", authMiddleware, async (req, res) => {
   try {
     let { user } = req;
 
+    if (req.body.password !== undefined) {
+      req.body.password = await bcrypt.hash(req.body.password, 10);
+      req.body.confirmPassword = await bcrypt.hash(
+        req.body.confirmPassword,
+        10
+      );
+    }
     let userdata = await User.findByIdAndUpdate(user, req.body, { new: true });
 
     res.status(200).json(userdata);

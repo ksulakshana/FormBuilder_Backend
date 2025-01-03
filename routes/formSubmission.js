@@ -66,7 +66,7 @@ router.post("/addCompleteCount", async (req, res) => {
     if (!ifFormExists) {
       return res.status(400).json({ message: "Form Does Not Exists" });
     }
-    console.log("submission");
+
     const formSubmission = new FormSubmission({
       formId: formId,
       formSubmitted: formSubmitted,
