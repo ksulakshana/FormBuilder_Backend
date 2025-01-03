@@ -18,8 +18,8 @@ const folderSchema = new Schema({
     required: true,
   },
   workspace: {
-    type: String,
-    // ref: "Workspace",
+    type: mongoose.Schema.ObjectId,
+    ref: "Workspace",
   },
 });
 
